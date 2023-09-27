@@ -15,14 +15,22 @@
       heading.innerHTML = "Hello React using JS Code";
       document.getElementById("pDivTag").textContent = heading.innerHTML;
     </script> -->
-    <script
+
+    <!-- 
+      The issue with calling react from CDN links is it is time consuming and also whenever a new raect version comes we have to change the links here. So, the best practise is to install react from npm and use react when it is installed as a dependency
+      npm install react and npm install react-dom
+
+      <script
       crossorigin
       src="https://unpkg.com/react@18/umd/react.development.js"
     ></script>
     <script
       crossorigin
       src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
-    ></script>
-    <script src="App.js"></script>
+    ></script> -->
+
+    <!-- <script src="App.js"></script>  This will give error as Browser scripts cannot have imports or exports. because this import is not normal JS, so we have to tell browser that this is module.  -->
+
+    <script type="module" src="App.js"></script>
   </body>
 </html>
