@@ -1,3 +1,10 @@
 #heading {
   color: brown;
 }
+.logo {
+  background: url("D:/Downloads/Facebook-Logosu.png") no-repeat;
+  width: 100px;
+  height: 100px;
+  display: block;
+  text-indent: -9999px;
+}

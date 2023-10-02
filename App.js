@@ -1,30 +1,71 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
+//react element
 const heading = React.createElement(
   "h1",
-  { id: "heading", name: "abc" },
-  "Script Calling from React Code!" //Shows what we have to put inside this element
+  { id: "heading" },
+  "Welcome to react World!"
 );
 
-console.log(heading); //returns object
-//const root = ReactDOM.createRoot(document.getElementById("divStart"));
+//This heading is not html element this is a react Element (JS object) created by react
 
-//root.render(heading);
+const root = ReactDOM.createRoot(document.getElementById("divStart"));
 
-//heading is an object when we print this in the console heading has so many attributes like type etc.  { id: "heading", name: "abc" } we provided in the heading object this shows as the attributes for this object.
+root.render(heading);
 
-//Now when this heading object is passed to the render method, this method will convert this object into browser understandable code and converts into html code to render.
+//root is treated as the body of the DOM everything we render, we have to render inside root
+//ReactDOM will take the object in this case heading and then it will parse it to HTML content
+//whatever we render inside root here will overwrite the body content in html page
 
-const parent = React.createElement("div", { id: "divInside" }, [
-  React.createElement("div", { id: "divChild" }, [
-    React.createElement("h1", {}, "I'm a h1 tag test React!"),
-    React.createElement("h2", {}, "I'm a h2 tag!"),
-  ]),
-  React.createElement("div", { id: "divChild2" }, [
-    React.createElement("h1", {}, "I'm a h1 tag!"),
-    React.createElement("h2", {}, "I'm a h2 tag!"),
-  ]),
-]);
-const root = ReactDOM.createRoot(document.getElementById("divStart")); // createRoot is responsible to create a root in React
-root.render(parent);
+//In summary: React.createElement => React Element which is JS object => HTML element and then it renders
+
+const jsxVariable = <h1 id="jsxHeading">Welcome to react world using jsx!!</h1>;
+
+//In summary: jsx => React.createElement => React Element which is JS object => HTML element and then it renders
+//And this jsx will be transpiled to react.createElement by Babel (open source JS compiler)
+
+//<h1 id="jsxHeading">Welcome to react world using jsx!!</h1>; this is not HTMl it is like a html syntax but not HTMl
+
+root.render(jsxVariable);
+
+//=====================react Component============================
+
+//Functional Component
+
+// const HeadingComponent = () => {
+//   return <h1 className="heading">This is Functional Component Heading</h1>;
+// };
+
+//OR we can also write if the return value is single line statement
+
+const HeadingComponent2 = () => (
+  <h1>Title is called inside HeadingComponent!!</h1>
+);
+const HeadingComponent = () => (
+  <div id="divContainer">
+    {/* <HeadingComponent2 /> */}
+    {HeadingComponent2()}
+    {/* Because at the end of the day Faunctional Component is just a JS function so we can call this as a function */}
+    {heading}
+    {/* We can also call React element inside the component */}
+    <h1 className="heading">This is Functional Component Heading</h1>
+  </div>
+);
+root.render(<HeadingComponent />); //This is how we render component in react
+
+const HeaderComponent = () => (
+  <div id="headerStyle">
+    <div id="logoImg" className="logo">
+      <a href="" className="logo"></a>
+    </div>
+    <div id="txtSearch">
+      <input type="textbox" placeholder="Search"></input>
+    </div>
+    <div id="userImg">
+      <img src="D:\Downloads\png-clipart-user-profile-computer-icons-login-user-avatars-monochrome-black-thumbnail.png"></img>
+    </div>
+  </div>
+);
+
+root.render(<HeaderComponent />);
